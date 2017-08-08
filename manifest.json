@@ -1,18 +1,15 @@
 {
-  "manifest_version": 2,
-
-  "name": "Dashboard",
-  "description": "This extensions opens new tab with several apps (ColorPicker, ColorPalette, URLshortener",
-  "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "Turtle-icon.png"
-    
-  },
-  "permissions": [
-    "tabs"
-  ],
-  "background": {
-    "scripts": ["background.js"]
-  }
+    "manifest_version": 2,
+    "name": "Turtles-popup",
+    "version": "1.0",
+    "description": "Popup with several funcionalities: colorPicker, colorPalette, URL-shortener, quoteGrabber, options",
+    "icons": {
+        "128": "128.png",
+        "48": "48.png",
+        "16": "16.png"
+    },
+    "browser_action": {
+        "default_icon": "16.png",
+        "default_popup": "popup.html"
+    }
 }

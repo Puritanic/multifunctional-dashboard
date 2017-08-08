@@ -1,0 +1,28 @@
+body {
+	background-color: #222222;
+	margin: 0;
+    padding: 0px;
+    overflow: hidden;
+    
+}
+
+
+    div:first-child {
+      margin-top: 0px;
+    }
+
+    div {
+      cursor: pointer;
+      text-align: center;
+      padding: 15px 15px;
+      font-family: sans-serif;
+      font-size: 1.1em;
+      width: 150px;
+      margin-top: 1px;
+      background: #222222;
+      color: whitesmoke;
+    }
+    div:hover {
+      background: #333333;
+    }
+    
