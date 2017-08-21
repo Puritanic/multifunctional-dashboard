@@ -103,8 +103,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _jquery2.default)("#colorPicker").on("change", function (e) {
     var selectedColor = e.currentTarget.value;
-    (0, _colorHistory.storeColorPickerData)(selectedColor);
-    (0, _colorHistory.printNewHistoryColor)(selectedColor, onColorClick);
+    (0, _colorHistory.storeColorPickerData)(selectedColor, onColorClick);
     (0, _getPalette2.default)(selectedColor.substring(1));
 });
 
@@ -3162,6 +3161,19 @@ var _bitlyAPIcall2 = _interopRequireDefault(_bitlyAPIcall);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// http://stackoverflow.com/a/18455088/277133
+function copyToClipboard(url) {
+    var input = document.createElement("input");
+    input.style.position = "fixed";
+    input.style.opacity = 0;
+    input.value = url;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("Copy");
+    document.body.removeChild(input);
+} // Automagically gets current tab's urls and shorten it
+;
+
 function shortenTabUrl() {
 
     var tabUrl;
@@ -3188,12 +3200,14 @@ function shortenTabUrl() {
                     height: 120,
                     text: short_url
                 });
+                copyToClipboard(short_url);
             } else {
                 $('.shortUrlInfo').append('<p> Invalid value </p>');
             }
         });
     });
-} // Automagically gets current tab's urls and shorten it
+}
+
 exports.default = shortenTabUrl;
 
 /***/ }),
@@ -3243,6 +3257,9 @@ function urlHistory() {
     var objects = [];
     var localCount = 0;
 
+    // https://stackoverflow.com/a/38641281 for sorting retrieved object before displaying it to history
+    var collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+
     async function main() {
         try {
             var storedUrls = await storage.get(null, function (items) {});
@@ -3256,7 +3273,7 @@ function urlHistory() {
         }
     }
 
-    // get count of stored items // primary
+    // get count of stored items 
     function getDataCount(y) {
         if (y) {
             if (y > 50) {
@@ -3286,22 +3303,22 @@ function urlHistory() {
 
     // create array from data received from storage
     function createDataArray(e) {
-        var appendKeyPrefix = 'urlData';
+        var appendKeySuffix = 'urlData';
         var appendKeyCount = storageCount;
         var keys = [];
 
         return new Promise(function (resolve, reject) {
             $.each(e, function (key) {
-                if (key.startsWith(appendKeyPrefix)) {
+                if (key.endsWith(appendKeySuffix)) {
                     keys.push(key);
                 }
             });
-            for (var i = 0; i < keys.length; i++) {
-                storage.get(keys[i], function (obj) {
+            var sortedKeys = keys.sort(collator.compare);
+            for (var i = 0; i < sortedKeys.length; i++) {
+                storage.get(sortedKeys[i], function (obj) {
                     objects.push(obj);
                 });
             }
-            console.log(objects);
             resolve(objects);
         });
     }
@@ -3326,13 +3343,13 @@ function urlHistory() {
             var _storage$set;
 
             localCount++;
-            storage.set((_storage$set = {}, _defineProperty(_storage$set, 'urlData' + localCount, dataObj), _defineProperty(_storage$set, 'globalCount', localCount), _storage$set), function () {
+            storage.set((_storage$set = {}, _defineProperty(_storage$set, localCount + '_' + 'urlData', dataObj), _defineProperty(_storage$set, 'globalCount', localCount), _storage$set), function () {
                 console.log('Saved to storage: ', dataObj, localCount);
             });
             var notificationMsg = {
                 type: "basic",
                 title: "Url shortener",
-                message: "Url shortened and it's data sent to storage",
+                message: "Shortened url copied to clipboard, and it's data sent to storage",
                 iconUrl: "icons/icon128.png"
             };
             chrome.notifications.create('success', notificationMsg, function () {
@@ -3342,9 +3359,9 @@ function urlHistory() {
             });
         }
     }
-
+    // write shortened-urls data to history <table></table>
     function urlData(o) {
-        Object.keys(o).map(function (e) {
+        Object.keys(o).sort(collator.compare).map(function (e) {
             if ('' + o[e].url && '' + o[e].title) {
                 title = '' + o[e].title;
                 url = '' + o[e].url;
@@ -3422,18 +3439,37 @@ exports.storeColorPickerData = storeColorPickerData;
 exports.printHistoryColor = printHistoryColor;
 exports.printNewHistoryColor = printNewHistoryColor;
 
-var NUM_COLUMNS = 2;
-function storeColorPickerData(color) {
+var _constants = __webpack_require__(11);
+
+function storeColorPickerData(color, onColorClick) {
 
     chrome.storage.sync.get(null, function (result) {
         // the input argument is ALWAYS an object containing the queried keys
         // so we select the key we need
         var historyColors = result.historyColors || [];
-        historyColors.push(color);
-        // set the new array value to the same key
-        chrome.storage.sync.set({ historyColors: historyColors }, function () {
-            console.log("storedColor", historyColors);
-        });
+
+        //add check for duplicates    
+        var dublicate = historyColors.length !== 0 && historyColors.filter(function (hColor) {
+            return hColor == color;
+        }).length !== 0;
+
+        if (!dublicate) {
+
+            if (historyColors.length >= _constants.STORAGE_LIMIT) {
+                historyColors.shift();
+            }
+            historyColors.push(color);
+            // set the new array value to the same key
+            chrome.storage.sync.set({ historyColors: historyColors }, function () {
+                console.log("storedColor", historyColors);
+            });
+            if (historyColors.length >= _constants.STORAGE_LIMIT) {
+                printHistoryColor(onColorClick);
+            } else {
+
+                printNewHistoryColor(color, onColorClick);
+            }
+        }
     });
 }
 function printHistoryColor(onColorClick) {
@@ -3441,19 +3477,20 @@ function printHistoryColor(onColorClick) {
     chrome.storage.sync.get('historyColors', function (result) {
         if (result.historyColors) {
             var content = "<table id='color-history-elements'";
-            var columns = NUM_COLUMNS;
+            var columns = _constants.NUM_COLUMNS;
             for (var i = 0; i < result.historyColors.length; i++) {
-                if (columns == NUM_COLUMNS) {
+                if (columns == _constants.NUM_COLUMNS) {
                     content += "<tr>";
                 }
                 content += "<td  color='" + result.historyColors[i] + "'style='background-color:" + result.historyColors[i] + "'></td>";
                 columns--;
                 if (columns == 0) {
                     content += "</tr>";
-                    columns = NUM_COLUMNS;
+                    columns = _constants.NUM_COLUMNS;
                 }
             }
             content += "</table>";
+            $("#color-history").empty();
             $("#color-history").append(content);
             //add click events for every color history td element added to the history table
             $("#color-history-elements td").on("click", function (e) {
@@ -3466,13 +3503,18 @@ function printHistoryColor(onColorClick) {
 }
 
 function printNewHistoryColor(color, onColorClick) {
-    var content = "";
+    var content = $("#color-history-elements").length == 0 ? "<table id='color-history-elements'>" : "";
     //check if there are two elements in the row, if yes add new row, otherwise add column to existing row
     var checkcolumnSize = $("#color-history-elements tbody")[0] ? $("#color-history-elements tbody")[0].lastElementChild.children.length : 0;
 
     if (checkcolumnSize == 2 || checkcolumnSize == 0) {
-        content = "<tr><td color='" + color + "'style='background-color:" + color + "'></td></tr>";
-        $("#color-history-elements").append(content);
+        content += "<tr><td color='" + color + "'style='background-color:" + color + "'></td></tr>";
+        if ($("#color-history-elements").length == 0) {
+            content += "</table>";
+            $("#color-history").append(content);
+        } else {
+            $("#color-history-elements").append(content);
+        }
     } else if (checkcolumnSize == 1) {
         content = "<td color='" + color + "' style='background-color:" + color + "'></td>";
         $($("#color-history-elements tbody")[0].lastElementChild).append(content);
@@ -3483,6 +3525,19 @@ function printNewHistoryColor(color, onColorClick) {
         onColorClick(e.currentTarget.attributes.color.value);
     });
 }
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var STORAGE_LIMIT = exports.STORAGE_LIMIT = 50;
+var NUM_COLUMNS = exports.NUM_COLUMNS = 2;
 
 /***/ })
 /******/ ]);
