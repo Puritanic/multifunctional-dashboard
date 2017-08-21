@@ -67,7 +67,7 @@ body {
     padding-left: 2%;
     padding-top: 10%;
     padding-right: 10%;
-    visibility: hidden;
+    visibility: visible;
 }
 .color-picker-popup .table >.row:first-child{
     display:flex;
