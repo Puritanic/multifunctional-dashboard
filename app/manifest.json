@@ -1,56 +1,48 @@
 {
-    "manifest_version":     2,
-
-    "name":                 "Multidash",
-    "description":          "A chrome extension with multiple features",
-    "version":              "0.1",
+    "manifest_version":   2,
+    "name":               "Turtles-popup",
+    "version":            "1.1",
+    "description":        "Popup with several funcionalities: colorPicker, colorPalette, URL-shortener, quoteGrabber, options",
+    "icons": {
+        "128":            "128.png",
+        "48":             "48.png",
+        "16":             "16.png"
+    },
+    "options_page":       "options.html",
 
     "browser_action": {
-        "default_icon":     "icons/icon48.png",
-        "default_title":    "Bit.ly url shortener",
-        "default_popup":    "index.html"
+        "default_icon":   "16.png",
+        "default_popup":  "popup.html"
     },
-
-    "icons": 
-	{ 
-		"16": 				          "icons/icon16.png",
-		"48": 				          "icons/icon48.png",
-		"128": 				          "icons/icon128.png"
-	},
-
-    "options_page":         "options.html",
-    
+    "permissions": [
+                          "tabs",
+                          "<all_urls>",
+                          "storage",
+                          "notifications",
+                          "contextMenus",
+                          "clipboardWrite",
+                          "activeTab"
+    ],
+    "content_scripts": [
+      {
+        "matches":        ["<all_urls>"],
+        "js":             ["selection.js"],
+        "run_at":         "document_start",
+        "all_frames":     true
+      }
+    ],
     "background": {
-        "scripts":          ["eventpage.js"],
-        "persistent":       false
+        "scripts":        ["eventpage.js"],
+        "persistent":     false
     },
-
-  "commands": {
-    "_execute_browser_action": {
-      "suggested_key": {
-        "default":          "Ctrl+Shift+E",
-        "linux":            "Ctrl+Shift+K",
-        "windows":          "Alt+Shift+P",
-        "mac":              "Alt+Shift+P"
+    "commands": {
+      "_execute_browser_action": {
+        "suggested_key": {
+          "default":          "Ctrl+Shift+E",
+          "linux":            "Ctrl+Shift+K",
+          "windows":          "Alt+Shift+P",
+          "mac":              "Alt+Shift+P"
+        }
       }
     }
-  },
-
-    "permissions": [
-                            "storage",
-                            "notifications",
-                            "contextMenus",
-		                        "clipboardWrite",
-                            "activeTab",
-                            "clipboardWrite"
-    ],
-
-    "content_scripts": 
-	[
-		{
-			"matches": 			      ["http://*/*", "https://*/*"],
-			"js": 				        ["content_script.js"],
-			"all_frames": 		    true
-		}
-  ]
 }
