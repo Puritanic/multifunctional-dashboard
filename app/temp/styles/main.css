@@ -1,78 +1,162 @@
-@font-face {
- font-family: Alice;
- font-style: normal;
- font-weight: 400;
- src: local("Alice Regular"),local(Alice-Regular),url(//fonts.gstatic.com/s/alice/v8/sZyKh5NKrCk1xkCk_F1S8A.eot?#) format("eot"),url(//fonts.gstatic.com/s/alice/v8/l5RFQT5MQiajQkFxjDLySg.woff2) format("woff2"),url(//fonts.gstatic.com/s/alice/v8/_H4kMcdhHr0B8RDaQcqpTA.woff) format("woff");
+.url-shortener__history td:first-of-type {
+            width: 72%;
+            text-indent: 5px;
 }
-
-@font-face {
- font-family: monospace;
- font-style: italic;
- font-weight: 400;
- src: local("Menlo Italic"),local(Menlo-Italic),local("Consolas Italic"),local(Consolas-Italic),local("Courier New Italic");
+.url-shortener__history tr:nth-child(even) {
+            background-color: rgb(124, 127, 130); 
+            color: #dddddd;
 }
-
-@font-face {
- font-family: monospace;
- font-style: italic;
- font-weight: 700;
- src: local("Menlo Bold Italic"),local(Menlo-BoldItalic),local(Monaco),local("Consolas Bold Italic"),local(Consolas-BoldItalic),local("Courier New Bold Italic");
+.url-shortener__history td {
+            /* line-height: 35px; */
 }
-
-@font-face {
- font-family: monospace;
- font-style: normal;
- font-weight: 400;
- src: local("Menlo Regular"),local(Menlo-Regular),local(Monaco),local(Consolas),local("Courier New");
+.url-shortener__history table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
 }
-
-@font-face {
- font-family: monospace;
- font-style: normal;
- font-weight: 700;
- src: local("Menlo Bold"),local(Menlo-Bold),local(Monaco),local("Consolas Bold"),local(Consolas-Bold),local("Courier New Bold");
+.url-shortener__input .url-shortener__qrcode {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-flow: column wrap;
+                    flex-flow: column wrap;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            margin-top: 15px;
 }
-
-@font-face {
- font-family: sans-serif;
- font-style: italic;
- font-weight: 300;
- src: local("Helvetica Neue Light Italic"),local(HelveticaNeue-LightItalic),local("Helvetica Light Oblique"),local(Helvetica-LightOblique);
+.url-shortener__input .url-shortener__info {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-flow: column wrap;
+                    flex-flow: column wrap;
+            text-align: center;
+            font-size: 15.2px;
+            font-size: .95rem;
+            margin-right: 16px;
+            margin-right: 1rem;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
 }
-
-@font-face {
- font-family: sans-serif;
- font-style: italic;
- font-weight: 400;
- src: local("Helvetica Neue Italic"),local(HelveticaNeue-Italic),local("Helvetica Oblique"),local(Helvetica-Oblique);
+.url-shortener__input .url-shortener__info a {
+                text-decoration: none;
+                color: #022933;
 }
-
-@font-face {
- font-family: sans-serif;
- font-style: italic;
- font-weight: 700;
- src: local("Helvetica Neue Bold Italic"),local(HelveticaNeue-BoldItalic),local("Helvetica Bold Oblique"),local(Helvetica-BoldOblique);
+.url-shortener__input input[type="submit"] {
+            height: 30px;
+            width: 15%;
+            border: none;
+            border-radius: 0 .5rem .5rem 0;
 }
-
-@font-face {
- font-family: sans-serif;
- font-style: normal;
- font-weight: 300;
- src: local("Helvetica Neue Light"),local(HelveticaNeue-Light),local("Helvetica Light"),local(Helvetica-Light);
+.url-shortener__input input[type="text"]:focus {
+            outline: none;
 }
-
-@font-face {
- font-family: sans-serif;
- font-style: normal;
- font-weight: 400;
- src: local(HelveticaNeue),local(Helvetica);
+.url-shortener__history {
+        width: 100%;
+        height: calc(99.9% * 5/8 - (10px - 10px * 5/8));
+        margin-bottom: 10px;
+        border: 1px solid black;
+        background: rgba(255, 255, 255, 0.75);
+        font-size: 16px;
+        font-size: 1rem;
+        overflow: scroll;
+        overflow-x: hidden;
+        & td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 3px;
+        }
 }
-
+.url-shortener__history:last-child {
+        & td,
+        th {
+        }
+        margin-bottom: 0;
+}
+.url-shortener__history a {
+            text-decoration: none;
+            color: #333538;
+            font-size: 17.6px;
+            font-size: 1.1rem;
+}
 @font-face {
- font-family: sans-serif;
- font-style: normal;
- font-weight: 700;
- src: local("Helvetica Neue Bold"),local(HelveticaNeue-Bold),local("Helvetica Bold"),local(Helvetica-Bold);
+            font-family: Alice;
+            font-style: normal;
+            font-weight: 400;
+            src: local("Alice Regular"),local(Alice-Regular),url(//fonts.gstatic.com/s/alice/v8/sZyKh5NKrCk1xkCk_F1S8A.eot?#) format("eot"),url(//fonts.gstatic.com/s/alice/v8/l5RFQT5MQiajQkFxjDLySg.woff2) format("woff2"),url(//fonts.gstatic.com/s/alice/v8/_H4kMcdhHr0B8RDaQcqpTA.woff) format("woff");
+}
+@font-face {
+            font-family: monospace;
+            font-style: italic;
+            font-weight: 400;
+            src: local("Menlo Italic"),local(Menlo-Italic),local("Consolas Italic"),local(Consolas-Italic),local("Courier New Italic");
+}
+@font-face {
+            font-family: monospace;
+            font-style: italic;
+            font-weight: 700;
+            src: local("Menlo Bold Italic"),local(Menlo-BoldItalic),local(Monaco),local("Consolas Bold Italic"),local(Consolas-BoldItalic),local("Courier New Bold Italic");
+}
+@font-face {
+            font-family: monospace;
+            font-style: normal;
+            font-weight: 400;
+            src: local("Menlo Regular"),local(Menlo-Regular),local(Monaco),local(Consolas),local("Courier New");
+}
+@font-face {
+            font-family: monospace;
+            font-style: normal;
+            font-weight: 700;
+            src: local("Menlo Bold"),local(Menlo-Bold),local(Monaco),local("Consolas Bold"),local(Consolas-Bold),local("Courier New Bold");
+}
+@font-face {
+            font-family: sans-serif;
+            font-style: italic;
+            font-weight: 300;
+            src: local("Helvetica Neue Light Italic"),local(HelveticaNeue-LightItalic),local("Helvetica Light Oblique"),local(Helvetica-LightOblique);
+}
+@font-face {
+            font-family: sans-serif;
+            font-style: italic;
+            font-weight: 400;
+            src: local("Helvetica Neue Italic"),local(HelveticaNeue-Italic),local("Helvetica Oblique"),local(Helvetica-Oblique);
+}
+@font-face {
+            font-family: sans-serif;
+            font-style: italic;
+            font-weight: 700;
+            src: local("Helvetica Neue Bold Italic"),local(HelveticaNeue-BoldItalic),local("Helvetica Bold Oblique"),local(Helvetica-BoldOblique);
+}
+@font-face {
+            font-family: sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            src: local("Helvetica Neue Light"),local(HelveticaNeue-Light),local("Helvetica Light"),local(Helvetica-Light);
+}
+@font-face {
+            font-family: sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            src: local(HelveticaNeue),local(Helvetica);
+}
+@font-face {
+            font-family: sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            src: local("Helvetica Neue Bold"),local(HelveticaNeue-Bold),local("Helvetica Bold"),local(Helvetica-Bold);
 }
 
 /*Variables*/
@@ -633,17 +717,15 @@ textarea {
 }
 
 @media screen and (min-width: 1280px) {
-
- .responsive {
-  font-size: 36px;
- }
+            .responsive {
+                        font-size: 36px;
+            }
 }
 
 @media screen and (max-width: 420px) {
-
- .responsive {
-  font-size: 16px;
- }
+            .responsive {
+                        font-size: 16px;
+            }
 }
 
 ::-webkit-scrollbar {
@@ -701,100 +783,85 @@ we can specify global variable to use flexbox as default instead of floats
 }
 
 .grid-one div:nth-child(1n) {
- float: left;
- margin-right: 30px;
- clear: none
+            float: left;
+            margin-right: 30px;
+            clear: none
 }
 
 .grid-one div:last-child {
- margin-right: 0
+            margin-right: 0
 }
 
 .grid-one div:nth-child(1n) {
- margin-right: 0;
- float: right
+            margin-right: 0;
+            float: right
 }
 
 .grid-one div:nth-child(1n + 1) {
- clear: both
+            clear: both
 }
 
 @media (min-width: 576px) {
-
- .grid-one div {
+            .grid-one div {
 		width: calc(99.9% * 1/2 - (30px - 30px * 1/2));
- }
-
- .grid-one div:nth-child(1n) {
-  float: left;
-  margin-right: 30px;
-  clear: none;
- }
-
- .grid-one div:last-child {
-  margin-right: 0;
- }
-
- .grid-one div:nth-child(2n) {
-  margin-right: 0;
-  float: right;
- }
-
- .grid-one div:nth-child(2n + 1) {
-  clear: both;
- }
+            }
+            .grid-one div:nth-child(1n) {
+                        float: left;
+                        margin-right: 30px;
+                        clear: none;
+            }
+            .grid-one div:last-child {
+                        margin-right: 0;
+            }
+            .grid-one div:nth-child(2n) {
+                        margin-right: 0;
+                        float: right;
+            }
+            .grid-one div:nth-child(2n + 1) {
+                        clear: both;
+            }
 	}
 
 @media (min-width: 768px) {
-
- .grid-one div {
+            .grid-one div {
 		width: calc(99.9% * 1/3 - (30px - 30px * 1/3));
- }
-
- .grid-one div:nth-child(1n) {
-  float: left;
-  margin-right: 30px;
-  clear: none;
- }
-
- .grid-one div:last-child {
-  margin-right: 0;
- }
-
- .grid-one div:nth-child(3n) {
-  margin-right: 0;
-  float: right;
- }
-
- .grid-one div:nth-child(3n + 1) {
-  clear: both;
- }
+            }
+            .grid-one div:nth-child(1n) {
+                        float: left;
+                        margin-right: 30px;
+                        clear: none;
+            }
+            .grid-one div:last-child {
+                        margin-right: 0;
+            }
+            .grid-one div:nth-child(3n) {
+                        margin-right: 0;
+                        float: right;
+            }
+            .grid-one div:nth-child(3n + 1) {
+                        clear: both;
+            }
 	}
 
 @media (min-width: 992px) {
-
- .grid-one div {
+            .grid-one div {
 		width: calc(99.9% * 1/6 - (30px - 30px * 1/6));
- }
-
- .grid-one div:nth-child(1n) {
-  float: left;
-  margin-right: 30px;
-  clear: none;
- }
-
- .grid-one div:last-child {
-  margin-right: 0;
- }
-
- .grid-one div:nth-child(6n) {
-  margin-right: 0;
-  float: right;
- }
-
- .grid-one div:nth-child(6n + 1) {
-  clear: both;
- }
+            }
+            .grid-one div:nth-child(1n) {
+                        float: left;
+                        margin-right: 30px;
+                        clear: none;
+            }
+            .grid-one div:last-child {
+                        margin-right: 0;
+            }
+            .grid-one div:nth-child(6n) {
+                        margin-right: 0;
+                        float: right;
+            }
+            .grid-one div:nth-child(6n + 1) {
+                        clear: both;
+            }
 	}
 
 .nested-grid {
@@ -895,25 +962,25 @@ we can specify global variable to use flexbox as default instead of floats
 }
 
 .grid-three:before {
- content: '';
- display: table;
+            content: '';
+            display: table;
 }
 
 .grid-three:after {
- content: '';
- display: table;
- clear: both;
+            content: '';
+            display: table;
+            clear: both;
 }
 
 .grid-three:before {
- content: '';
- display: table;
+            content: '';
+            display: table;
 }
 
 .grid-three:after {
- content: '';
- display: table;
- clear: both;
+            content: '';
+            display: table;
+            clear: both;
 }
 
 .grid-three div {
@@ -923,106 +990,90 @@ we can specify global variable to use flexbox as default instead of floats
 }
 
 .grid-three div:nth-child(1n) {
- float: left;
- margin-right: 30px;
- clear: none
+            float: left;
+            margin-right: 30px;
+            clear: none
 }
 
 .grid-three div:last-child {
- margin-right: 0
+            margin-right: 0
 }
 
 .grid-three div:nth-child(1n) {
- margin-right: 0;
- float: right
+            margin-right: 0;
+            float: right
 }
 
 .grid-three div:nth-child(1n + 1) {
- clear: both
+            clear: both
 }
 
 @media (min-width: 576px) {
-
- .grid-three div {
+            .grid-three div {
 		width: calc(99.9% * 1/2 - (30px - 30px * 1/2));
- }
-
- .grid-three div:nth-child(1n) {
-  float: left;
-  margin-right: 30px;
-  clear: none;
- }
-
- .grid-three div:last-child {
-  margin-right: 0;
- }
-
- .grid-three div:nth-child(2n) {
-  margin-right: 0;
-  float: right;
- }
-
- .grid-three div:nth-child(2n + 1) {
-  clear: both;
- }
+            }
+            .grid-three div:nth-child(1n) {
+                        float: left;
+                        margin-right: 30px;
+                        clear: none;
+            }
+            .grid-three div:last-child {
+                        margin-right: 0;
+            }
+            .grid-three div:nth-child(2n) {
+                        margin-right: 0;
+                        float: right;
+            }
+            .grid-three div:nth-child(2n + 1) {
+                        clear: both;
+            }
 	}
 
 @media (min-width: 768px) {
-
- .grid-three div {
+            .grid-three div {
 		width: calc(99.9% * 1/3 - (30px - 30px * 1/3));
- }
-
- .grid-three div:nth-child(1n) {
-  float: left;
-  margin-right: 30px;
-  clear: none;
- }
-
- .grid-three div:last-child {
-  margin-right: 0;
- }
-
- .grid-three div:nth-child(3n) {
-  margin-right: 0;
-  float: right;
- }
-
- .grid-three div:nth-child(3n + 1) {
-  clear: both;
- }
+            }
+            .grid-three div:nth-child(1n) {
+                        float: left;
+                        margin-right: 30px;
+                        clear: none;
+            }
+            .grid-three div:last-child {
+                        margin-right: 0;
+            }
+            .grid-three div:nth-child(3n) {
+                        margin-right: 0;
+                        float: right;
+            }
+            .grid-three div:nth-child(3n + 1) {
+                        clear: both;
+            }
 	}
 
 @media (min-width: 992px) {
-
- .grid-three div {
+            .grid-three div {
 		width: calc(99.9% * 1/4 - (30px - 30px * 1/4));
 		height: calc(99.9% * 1/4 - (30px - 30px * 1/4));
- }
-
- .grid-three div:nth-child(1n) {
-  float: left;
-  margin-right: 30px;
-  margin-bottom: 30px;
-  clear: none;
- }
-
- .grid-three div:last-child {
-  margin-right: 0;
-  margin-bottom: 0;
- }
-
- .grid-three div:nth-child(4n) {
-  margin-right: 0;
- }
-
- .grid-three div:nth-child(4n + 1) {
-  clear: both;
- }
-
- .grid-three div:nth-last-child(-n + 4) {
-  margin-bottom: 0;
- }
+            }
+            .grid-three div:nth-child(1n) {
+                        float: left;
+                        margin-right: 30px;
+                        margin-bottom: 30px;
+                        clear: none;
+            }
+            .grid-three div:last-child {
+                        margin-right: 0;
+                        margin-bottom: 0;
+            }
+            .grid-three div:nth-child(4n) {
+                        margin-right: 0;
+            }
+            .grid-three div:nth-child(4n + 1) {
+                        clear: both;
+            }
+            .grid-three div:nth-last-child(-n + 4) {
+                        margin-bottom: 0;
+            }
 	}
 
 /*  Flexbox Grid  */
@@ -1053,98 +1104,84 @@ we can specify global variable to use flexbox as default instead of floats
 }
 
 .grid-four div:nth-child(1n) {
- float: left;
- margin-right: 30px;
- clear: none
+            float: left;
+            margin-right: 30px;
+            clear: none
 }
 
 .grid-four div:last-child {
- margin-right: 0
+            margin-right: 0
 }
 
 .grid-four div:nth-child(1n) {
- margin-right: 0;
- float: right
+            margin-right: 0;
+            float: right
 }
 
 .grid-four div:nth-child(1n + 1) {
- clear: both
+            clear: both
 }
 
 @media (min-width: 576px) {
-
- .grid-four div {
+            .grid-four div {
 		width: calc(99.9% * 1/2 - (30px - 30px * 1/2));
- }
-
- .grid-four div:nth-child(1n) {
-  float: left;
-  margin-right: 30px;
-  clear: none;
- }
-
- .grid-four div:last-child {
-  margin-right: 0;
- }
-
- .grid-four div:nth-child(2n) {
-  margin-right: 0;
-  float: right;
- }
-
- .grid-four div:nth-child(2n + 1) {
-  clear: both;
- }
+            }
+            .grid-four div:nth-child(1n) {
+                        float: left;
+                        margin-right: 30px;
+                        clear: none;
+            }
+            .grid-four div:last-child {
+                        margin-right: 0;
+            }
+            .grid-four div:nth-child(2n) {
+                        margin-right: 0;
+                        float: right;
+            }
+            .grid-four div:nth-child(2n + 1) {
+                        clear: both;
+            }
 	}
 
 @media (min-width: 768px) {
-
- .grid-four div {
+            .grid-four div {
 		width: calc(99.9% * 1/3 - (30px - 30px * 1/3));
- }
-
- .grid-four div:nth-child(1n) {
-  float: left;
-  margin-right: 30px;
-  clear: none;
- }
-
- .grid-four div:last-child {
-  margin-right: 0;
- }
-
- .grid-four div:nth-child(3n) {
-  margin-right: 0;
-  float: right;
- }
-
- .grid-four div:nth-child(3n + 1) {
-  clear: both;
- }
+            }
+            .grid-four div:nth-child(1n) {
+                        float: left;
+                        margin-right: 30px;
+                        clear: none;
+            }
+            .grid-four div:last-child {
+                        margin-right: 0;
+            }
+            .grid-four div:nth-child(3n) {
+                        margin-right: 0;
+                        float: right;
+            }
+            .grid-four div:nth-child(3n + 1) {
+                        clear: both;
+            }
 	}
 
 @media (min-width: 992px) {
-
- .grid-four div {
+            .grid-four div {
 		flex-grow: 0;
 		flex-shrink: 0;
 		flex-basis: calc(99.9% * 1/4 - (30px - 30px * 1/4));
 		width: calc(99.9% * 1/4 - (30px - 30px * 1/4));
- }
-
- .grid-four div:nth-child(1n) {
-  margin-right: 30px;
-  margin-left: 0;
- }
-
- .grid-four div:last-child {
-  margin-right: 0;
- }
-
- .grid-four div:nth-child(4n) {
-  margin-right: 0;
-  margin-left: auto;
- }
+            }
+            .grid-four div:nth-child(1n) {
+                        margin-right: 30px;
+                        margin-left: 0;
+            }
+            .grid-four div:last-child {
+                        margin-right: 0;
+            }
+            .grid-four div:nth-child(4n) {
+                        margin-right: 0;
+                        margin-left: auto;
+            }
 	}
 
 /* html setup */
@@ -1294,16 +1331,16 @@ div:first-child {
 }
 
 .color-picker-popup{
-    /* position: absolute; */
+    position: absolute;
     height: 100%;
     width: 100%;
-    /* top: 0;
-    left: 0; */
+    top: 0;
+    left: 0;
     background-color: white;
     padding-left: 2%;
     padding-top: 10%;
     padding-right: 10%;
-    visibility: visible;
+    visibility: hidden;
 }
 
 .color-picker-popup .table >.row:first-child{
@@ -1340,104 +1377,71 @@ div:first-child {
     font-weight: bold;
 }
 
-/* .url-shortener {
+.url-shortener {
+    visibility: hidden;
     min-height: 600px;
     min-width: 600px;
     max-height: 600px;
     max-width: 600px;
     width: 100%;
     height: 90vh;
-    lost-center: 98% 1rem flex;
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 16px;
     padding-top: 1rem;
+    padding-bottom: 16px;
     padding-bottom: 1rem;
-    background: color(#607D8B alpha(15%));
-    &__input {
+    background: rgba(96, 125, 139, 0.15)
+}
+
+.url-shortener__input {
         border-radius: .5rem .5rem 0 0;
-        lost-row: 3/8 10px;
+        width: 100%;
+        height: calc(99.9% * 3/8 - (10px - 10px * 3/8));
+        margin-bottom: 10px;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         border: 1px solid black;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-flow: column wrap;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-flow: column wrap;
+                flex-flow: column wrap;
+        padding-top: 16px;
         padding-top: 1rem;
-        align-items: top;
-        justify-content: center;
-        background: color(white alpha(55%));
-        & input[type="text"] {
-            background: color(#455A64 alpha(45%));
+        -webkit-box-align: top;
+            -ms-flex-align: top;
+                align-items: top;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        background: rgba(255, 255, 255, 0.55);
+}
+
+.url-shortener__input:last-child {
+            margin-bottom: 0;
+}
+
+.url-shortener__input input[type="text"] {
+            background: rgba(69, 90, 100, 0.45);
             border: none;
             width: 75%;
             height: 30px;
             padding-left: 5px;
-        }
-        & input[type="text"]:focus {
-            outline: none;
-        }
-        & input[type="submit"] {
-            height: 30px;
-            width: 15%;
-            border: none;
-            border-radius: 0 .5rem .5rem 0;
-        }
-        & .url-shortener__info {
-            display: flex;
-            flex-flow: column wrap;
-            text-align: center;
-            font-size: .95rem;
-            margin-right: 1rem;
-            align-items: center;
-            justify-content: center;
-
-            & a {
-                text-decoration: none;
-                color: var(--darkblue);
-            }
-        }
-
-        & .url-shortener__qrcode {
-            display: flex;
-            flex-flow: column wrap;
-            align-items: center;
-            justify-content: center;
-            margin-top: 15px;
-        }
-    }
-    &__history {
-        lost-row: 5/8 10px;
-        border: 1px solid black;
-        background: color(white alpha(75%));
-        font-size: 1rem;
-        overflow: scroll;
-        overflow-x: hidden;
-
-        & a {
-            text-decoration: none;
-            color: #333538;
-            font-size: 1.1rem;
-        }
-        & table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-        & td {
-            line-height: 35px;
-        }
-        & td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 3px;
-        }
-        & tr:nth-child(even) {
-            background-color: color(#24292E tint(40%)); 
-            color: #dddddd;
-        }
-        & td:first-of-type {
-            width: 72%;
-            text-indent: 5px;
-        }
-    }
-}    */
+}
 
 /* ==========================================================================
    Helper classes
