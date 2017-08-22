@@ -92,24 +92,38 @@ var _urlHistory2 = _interopRequireDefault(_urlHistory);
 
 var _colorHistory = __webpack_require__(10);
 
+var _popup = __webpack_require__(12);
+
+var _popup2 = _interopRequireDefault(_popup);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _shortenTabUrl2.default)();
 (0, _urlHistory2.default)();
 
 (0, _jquery2.default)(document).ready(function () {
-    (0, _colorHistory.printHistoryColor)(onColorClick);
+  (0, _colorHistory.printHistoryColor)(onColorClick);
 });
 
 (0, _jquery2.default)("#colorPicker").on("change", function (e) {
-    var selectedColor = e.currentTarget.value;
-    (0, _colorHistory.storeColorPickerData)(selectedColor, onColorClick);
-    (0, _getPalette2.default)(selectedColor.substring(1));
+  var selectedColor = e.currentTarget.value;
+  (0, _colorHistory.storeColorPickerData)(selectedColor, onColorClick);
+  (0, _getPalette2.default)(selectedColor.substring(1));
 });
 
 function onColorClick(selectedColor) {
-    (0, _getPalette2.default)(selectedColor.substring(1));
+  (0, _getPalette2.default)(selectedColor.substring(1));
 }
+
+chrome.extension.onMessage.addListener(function (request, sender, sendResponse) {
+  if (request.method == "wysylamZapytanie") sendResponse({ data: window.getSelection().toString() });else sendResponse({}); // snub them.
+});
+
+(0, _jquery2.default)(function () {
+  (0, _jquery2.default)('#quoteGrabber').click(function () {
+    (0, _popup2.default)();
+  });
+});
 
 /***/ }),
 /* 1 */
@@ -3538,6 +3552,30 @@ Object.defineProperty(exports, "__esModule", {
 });
 var STORAGE_LIMIT = exports.STORAGE_LIMIT = 50;
 var NUM_COLUMNS = exports.NUM_COLUMNS = 2;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function pasteSelection() {
+  chrome.tabs.query({ active: true, windowId: chrome.windows.WINDOW_ID_CURRENT }, function (tab) {
+    chrome.tabs.sendMessage(tab[0].id, { method: "wysylamZapytanie" }, function (response) {
+      console.log('dostaje odpowiedz');
+      console.log(response);
+      var text = document.getElementById('text');
+      text.innerHTML = response.data;
+    });
+  });
+}
+
+exports.default = pasteSelection;
 
 /***/ })
 /******/ ]);

@@ -24,3 +24,16 @@ $("#colorPicker").on("change", function(e) {
 function onColorClick(selectedColor) {
     printPalette(selectedColor.substring(1));
 }
+
+chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.method == "wysylamZapytanie")
+      sendResponse({data: window.getSelection().toString()});
+    else
+      sendResponse({}); // snub them.
+  });
+
+  import pasteSelection from './modules/popup';
+
+  $(function(){
+    $('#quoteGrabber').click(function(){pasteSelection();});
+  });
