@@ -42,7 +42,7 @@ body {
       text-align: center;
       font-family: sans-serif;
       font-size: 1.1em;
-      visibility: visible;
+      /* visibility: visible; */
       background: #222222;
       color: whitesmoke;
       display: flex;
@@ -67,7 +67,7 @@ body {
     padding-left: 2%;
     padding-top: 10%;
     padding-right: 10%;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 .color-picker-popup .table >.row:first-child{
     display:flex;
@@ -96,7 +96,7 @@ body {
     font-weight: bold;
 }
 .url-shortener {
-    visibility: hidden;
+    /* visibility: hidden; */
     min-height: 600px;
     min-width: 600px;
     max-height: 600px;
