@@ -92,6 +92,8 @@ var _urlHistory2 = _interopRequireDefault(_urlHistory);
 
 var _colorHistory = __webpack_require__(10);
 
+__webpack_require__(12);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _shortenTabUrl2.default)();
@@ -110,6 +112,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function onColorClick(selectedColor) {
     (0, _getPalette2.default)(selectedColor.substring(1));
 }
+
+// chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+//     if (request.method == "wysylamZapytanie")
+//       sendResponse({data: window.getSelection().toString()});
+//     else
+//       sendResponse({}); // snub them.
+//   });
+// import './modules/selection';
 
 /***/ }),
 /* 1 */
@@ -3538,6 +3548,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 var STORAGE_LIMIT = exports.STORAGE_LIMIT = 50;
 var NUM_COLUMNS = exports.NUM_COLUMNS = 2;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+$(function () {
+  $('#quoteGrabber').click(function () {
+    pasteSelection();
+  });
+});
+function pasteSelection() {
+  chrome.tabs.query({ active: true, windowId: chrome.windows.WINDOW_ID_CURRENT }, function (tab) {
+    chrome.tabs.sendMessage(tab[0].id, { method: "wysylamZapytanie" }, function (response) {
+      console.log('dostaje odpowiedz');
+      console.log(response);
+      var text = document.getElementById('text');
+      text.innerHTML = response.data;
+    });
+  });
+}
 
 /***/ })
 /******/ ]);
