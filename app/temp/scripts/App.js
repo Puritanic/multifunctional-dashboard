@@ -94,9 +94,7 @@ var _colorHistory = __webpack_require__(10);
 
 __webpack_require__(12);
 
-var _popup = __webpack_require__(13);
-
-var _popup2 = _interopRequireDefault(_popup);
+__webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -123,13 +121,6 @@ function onColorClick(selectedColor) {
 //     else
 //       sendResponse({}); // snub them.
 //   });
-
-
-(0, _jquery2.default)(function () {
-    (0, _jquery2.default)('#quoteGrabber').click(function () {
-        (0, _popup2.default)();
-    });
-});
 
 /***/ }),
 /* 1 */
@@ -3577,10 +3568,11 @@ chrome.extension.onMessage.addListener(function (request, sender, sendResponse) 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+$(function () {
+  $('#quoteGrabber').click(function () {
+    pasteSelection();
+  });
 });
-
 function pasteSelection() {
   chrome.tabs.query({ active: true, windowId: chrome.windows.WINDOW_ID_CURRENT }, function (tab) {
     chrome.tabs.sendMessage(tab[0].id, { method: "wysylamZapytanie" }, function (response) {
@@ -3591,8 +3583,6 @@ function pasteSelection() {
     });
   });
 }
-
-exports.default = pasteSelection;
 
 /***/ })
 /******/ ]);

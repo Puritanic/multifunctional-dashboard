@@ -32,8 +32,6 @@ function onColorClick(selectedColor) {
 //       sendResponse({}); // snub them.
 //   });
 import './modules/selection';
-  import pasteSelection from './modules/popup';
+  import './modules/popup';
 
-  $(function(){
-    $('#quoteGrabber').click(function(){pasteSelection();});
-  });
+  
