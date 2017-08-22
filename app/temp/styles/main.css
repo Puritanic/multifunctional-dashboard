@@ -1309,7 +1309,7 @@ div:first-child {
       text-align: center;
       font-family: sans-serif;
       font-size: 1.1em;
-      visibility: hidden;
+      visibility: visible;
       background: #222222;
       color: whitesmoke;
       display: -webkit-box;
