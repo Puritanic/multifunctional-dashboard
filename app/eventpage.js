@@ -8,3 +8,10 @@ chrome.browserAction.onClicked.addListener(function (tab) {
    chrome.commands.onCommand.addListener(function(command) {
         console.log('Command:', command);
       });
+
+      chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+        if (request.method == "wysylamZapytanie")
+          sendResponse({data: window.getSelection().toString()});
+        else
+          sendResponse({}); // snub them.
+      });
