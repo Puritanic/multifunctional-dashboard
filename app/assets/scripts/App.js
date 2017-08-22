@@ -31,7 +31,7 @@ function onColorClick(selectedColor) {
 //     else
 //       sendResponse({}); // snub them.
 //   });
-import './modules/selection';
-  import './modules/popup';
+// import './modules/selection';
+//   import './modules/popup';
 
   

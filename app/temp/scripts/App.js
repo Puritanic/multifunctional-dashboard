@@ -92,10 +92,6 @@ var _urlHistory2 = _interopRequireDefault(_urlHistory);
 
 var _colorHistory = __webpack_require__(10);
 
-__webpack_require__(12);
-
-__webpack_require__(13);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _shortenTabUrl2.default)();
@@ -121,6 +117,8 @@ function onColorClick(selectedColor) {
 //     else
 //       sendResponse({}); // snub them.
 //   });
+// import './modules/selection';
+//   import './modules/popup';
 
 /***/ }),
 /* 1 */
@@ -3549,40 +3547,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 var STORAGE_LIMIT = exports.STORAGE_LIMIT = 50;
 var NUM_COLUMNS = exports.NUM_COLUMNS = 2;
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-chrome.extension.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.method == "wysylamZapytanie") sendResponse({ data: window.getSelection().toString() });else sendResponse({}); // snub them.
-});
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-$(function () {
-  $('#quoteGrabber').click(function () {
-    pasteSelection();
-  });
-});
-function pasteSelection() {
-  chrome.tabs.query({ active: true, windowId: chrome.windows.WINDOW_ID_CURRENT }, function (tab) {
-    chrome.tabs.sendMessage(tab[0].id, { method: "wysylamZapytanie" }, function (response) {
-      console.log('dostaje odpowiedz');
-      console.log(response);
-      var text = document.getElementById('text');
-      text.innerHTML = response.data;
-    });
-  });
-}
 
 /***/ })
 /******/ ]);
