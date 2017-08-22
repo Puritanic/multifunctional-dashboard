@@ -58,16 +58,16 @@ body {
     margin-left: 10px;
 }
 .color-picker-popup{
-    /* position: absolute; */
+    position: absolute;
     height: 100%;
     width: 100%;
-    /* top: 0;
-    left: 0; */
+    top: 0;
+    left: 0;
     background-color: white;
     padding-left: 2%;
     padding-top: 10%;
     padding-right: 10%;
-    visibility: visible;
+    visibility: hidden;
 }
 .color-picker-popup .table >.row:first-child{
     display:flex;
@@ -95,7 +95,8 @@ body {
     font-size: 20px;
     font-weight: bold;
 }
-/* .url-shortener {
+.url-shortener {
+    visibility: hidden;
     min-height: 600px;
     min-width: 600px;
     max-height: 600px;
@@ -192,4 +193,4 @@ body {
             text-indent: 5px;
         }
     }
-}    */
+}   
