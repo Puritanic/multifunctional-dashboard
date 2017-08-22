@@ -25,13 +25,6 @@ function onColorClick(selectedColor) {
     printPalette(selectedColor.substring(1));
 }
 
-// chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
-//     if (request.method == "wysylamZapytanie")
-//       sendResponse({data: window.getSelection().toString()});
-//     else
-//       sendResponse({}); // snub them.
-//   });
-// import './modules/selection';
-  import './modules/popup';
+
 
   
