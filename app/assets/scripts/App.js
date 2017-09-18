@@ -12,9 +12,11 @@ import colorInfo from './modules/colorInfoBlock';
 
 import colorPickerInit from './modules/colorPicker';
 
-import * as createQuote from './modules/quote-scripts/createquote.js';
-import * as listQuotes from './modules/quote-scripts/listQuotes.js';
-import * as setupInterface from './modules/quote-scripts/setupInterface.js';
+// import * as createQuote from './modules/quote-scripts/createquote.js';
+// import * as listQuotes from './modules/quote-scripts/listQuotes.js';
+// import * as setupInterface from './modules/quote-scripts/setupInterface.js';
+
+import * as notes from './modules/notesScripts/note';
 
 import { storeColorPickerData, printNewHistoryColor, printHistoryColor, printSelectedColor } from './modules/colorHistory';
 

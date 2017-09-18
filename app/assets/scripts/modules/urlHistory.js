@@ -120,7 +120,6 @@ function urlHistory() {
                 url = `${o[e].url}`;
                 readData(title, url);
             }
-            // console.log(`key=${e}  value1=${o[e].url}  value1=${o[e].title}`)
         });
     }
 

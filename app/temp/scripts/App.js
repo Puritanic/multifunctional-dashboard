@@ -60,130 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//create namespace for MVC (model-view-controler) - ql is quotes list
-
-var ql = exports.ql = { model: {}, view: {}, ctrl: {} };
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.showSelectedColor = showSelectedColor;
-
-var _jquery = __webpack_require__(2);
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-__webpack_require__(8);
-
-__webpack_require__(9);
-
-var _getPalette = __webpack_require__(3);
-
-var _getPalette2 = _interopRequireDefault(_getPalette);
-
-var _shortenTabUrl = __webpack_require__(10);
-
-var _shortenTabUrl2 = _interopRequireDefault(_shortenTabUrl);
-
-var _urlHistory = __webpack_require__(12);
-
-var _urlHistory2 = _interopRequireDefault(_urlHistory);
-
-__webpack_require__(13);
-
-var _colorInfoBlock = __webpack_require__(14);
-
-var _colorInfoBlock2 = _interopRequireDefault(_colorInfoBlock);
-
-var _colorPicker = __webpack_require__(15);
-
-var _colorPicker2 = _interopRequireDefault(_colorPicker);
-
-var _createquote = __webpack_require__(16);
-
-var createQuote = _interopRequireWildcard(_createquote);
-
-var _listQuotes = __webpack_require__(17);
-
-var listQuotes = _interopRequireWildcard(_listQuotes);
-
-var _setupInterface = __webpack_require__(18);
-
-var setupInterface = _interopRequireWildcard(_setupInterface);
-
-var _colorHistory = __webpack_require__(19);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _jquery2.default)(document).ready(function () {
-    (0, _colorHistory.printHistoryColor)(onColorClick);
-    getLastColor().then(function (selectedColor) {
-        if (selectedColor) {
-            (0, _getPalette2.default)(selectedColor.substring(1));
-            (0, _colorHistory.printSelectedColor)(selectedColor.substring(1));
-        }
-    });
-
-    (0, _jquery2.default)("#eyeDropper").on('click', function () {
-        console.log("pick color!");
-        (0, _colorPicker2.default)();
-        (0, _jquery2.default)('.options').addClass('invisible');
-        (0, _jquery2.default)('#colorPickerDiv').addClass('invisible');
-        (0, _jquery2.default)('.colorInfo').removeClass('invisible');
-        (0, _colorInfoBlock2.default)();
-    });
-    (0, _jquery2.default)('#shrinkMe').click(function () {
-        // or any other event
-        (0, _jquery2.default)(this).toggleClass('shrink');
-    });
-});
-
-function showSelectedColor(selectedColor) {
-    (0, _colorHistory.printSelectedColor)(selectedColor.substring(1));
-    (0, _getPalette2.default)(selectedColor.substring(1));
-}
-
-function onColorClick(selectedColor) {
-    (0, _getPalette2.default)(selectedColor.substring(1));
-    (0, _colorHistory.printSelectedColor)(selectedColor.substring(1));
-}
-
-(0, _jquery2.default)(document).one('urlShortenerTriggered', function () {
-    (0, _shortenTabUrl2.default)();
-    (0, _urlHistory2.default)();
-});
-
-async function getLastColor() {
-    var history = await chrome.storage.sync.get('historyColors');
-    if (history.historyColors) {
-        return history.historyColors[history.historyColors.length - 1];
-    } else return null;
-}
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2462,7 +2343,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       return 1 === arguments.length ? this.off(a, "**") : this.off(b, a || "**", c);
     } }), r.holdReady = function (a) {
     a ? r.readyWait++ : r.ready(!0);
-  }, r.isArray = Array.isArray, r.parseJSON = JSON.parse, r.nodeName = B, "function" == "function" && __webpack_require__(7) && !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+  }, r.isArray = Array.isArray, r.parseJSON = JSON.parse, r.nodeName = B, "function" == "function" && __webpack_require__(6) && !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
     return r;
   }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));var Vb = a.jQuery,
@@ -2470,10 +2351,111 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     return a.$ === r && (a.$ = Wb), b && a.jQuery === r && (a.jQuery = Vb), r;
   }, b || (a.jQuery = a.$ = r), r;
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)(module)))
 
 /***/ }),
-/* 3 */
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.showSelectedColor = showSelectedColor;
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+__webpack_require__(7);
+
+__webpack_require__(8);
+
+var _getPalette = __webpack_require__(2);
+
+var _getPalette2 = _interopRequireDefault(_getPalette);
+
+var _shortenTabUrl = __webpack_require__(9);
+
+var _shortenTabUrl2 = _interopRequireDefault(_shortenTabUrl);
+
+var _urlHistory = __webpack_require__(11);
+
+var _urlHistory2 = _interopRequireDefault(_urlHistory);
+
+__webpack_require__(12);
+
+var _colorInfoBlock = __webpack_require__(13);
+
+var _colorInfoBlock2 = _interopRequireDefault(_colorInfoBlock);
+
+var _colorPicker = __webpack_require__(14);
+
+var _colorPicker2 = _interopRequireDefault(_colorPicker);
+
+var _note = __webpack_require__(15);
+
+var notes = _interopRequireWildcard(_note);
+
+var _colorHistory = __webpack_require__(16);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import * as createQuote from './modules/quote-scripts/createquote.js';
+// import * as listQuotes from './modules/quote-scripts/listQuotes.js';
+// import * as setupInterface from './modules/quote-scripts/setupInterface.js';
+
+(0, _jquery2.default)(document).ready(function () {
+    (0, _colorHistory.printHistoryColor)(onColorClick);
+    getLastColor().then(function (selectedColor) {
+        if (selectedColor) {
+            (0, _getPalette2.default)(selectedColor.substring(1));
+            (0, _colorHistory.printSelectedColor)(selectedColor.substring(1));
+        }
+    });
+
+    (0, _jquery2.default)("#eyeDropper").on('click', function () {
+        console.log("pick color!");
+        (0, _colorPicker2.default)();
+        (0, _jquery2.default)('.options').addClass('invisible');
+        (0, _jquery2.default)('#colorPickerDiv').addClass('invisible');
+        (0, _jquery2.default)('.colorInfo').removeClass('invisible');
+        (0, _colorInfoBlock2.default)();
+    });
+    (0, _jquery2.default)('#shrinkMe').click(function () {
+        // or any other event
+        (0, _jquery2.default)(this).toggleClass('shrink');
+    });
+});
+
+function showSelectedColor(selectedColor) {
+    (0, _colorHistory.printSelectedColor)(selectedColor.substring(1));
+    (0, _getPalette2.default)(selectedColor.substring(1));
+}
+
+function onColorClick(selectedColor) {
+    (0, _getPalette2.default)(selectedColor.substring(1));
+    (0, _colorHistory.printSelectedColor)(selectedColor.substring(1));
+}
+
+(0, _jquery2.default)(document).one('urlShortenerTriggered', function () {
+    (0, _shortenTabUrl2.default)();
+    (0, _urlHistory2.default)();
+});
+
+async function getLastColor() {
+    var history = await chrome.storage.sync.get('historyColors');
+    if (history.historyColors) {
+        return history.historyColors[history.historyColors.length - 1];
+    } else return null;
+}
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2682,7 +2664,7 @@ function printPalette(color) {
 exports.default = printPalette;
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2696,14 +2678,14 @@ var NUM_COLUMNS = exports.NUM_COLUMNS = 2;
 var COLOR_PICKER_CONTENT_SCRIPT = exports.COLOR_PICKER_CONTENT_SCRIPT = "color_picker.js";
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(1);
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -2731,7 +2713,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -2740,7 +2722,7 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3026,7 +3008,7 @@ module.exports = __webpack_amd_options__;
 })(jQuery);
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3239,7 +3221,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 })();
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3249,7 +3231,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _bitlyAPIcall = __webpack_require__(11);
+var _bitlyAPIcall = __webpack_require__(10);
 
 var _bitlyAPIcall2 = _interopRequireDefault(_bitlyAPIcall);
 
@@ -3305,7 +3287,7 @@ function shortenTabUrl() {
 exports.default = shortenTabUrl;
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3333,7 +3315,7 @@ function get_short_url(longUrl, func) {
 exports.default = get_short_url;
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3463,7 +3445,6 @@ function urlHistory() {
                 url = '' + o[e].url;
                 readData(title, url);
             }
-            // console.log(`key=${e}  value1=${o[e].url}  value1=${o[e].title}`)
         });
     }
 
@@ -3530,13 +3511,13 @@ function urlHistory() {
 exports.default = urlHistory;
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _jquery = __webpack_require__(2);
+var _jquery = __webpack_require__(0);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -3558,7 +3539,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 });
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3575,7 +3556,7 @@ function colorInfo() {
 exports.default = colorInfo;
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3585,7 +3566,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _constants = __webpack_require__(4);
+var _constants = __webpack_require__(3);
 
 var _App = __webpack_require__(1);
 
@@ -3717,114 +3698,35 @@ function colorPickerInit() {
 exports.default = colorPickerInit;
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _initialize = __webpack_require__(0);
+var _jquery = __webpack_require__(0);
 
-_initialize.ql.view.createQuote = {
-  setupUserInterface: function setupUserInterface() {
+var _jquery2 = _interopRequireDefault(_jquery);
 
-    //location.reload(true);
-    console.log("UI set up!");
-    //   var saveButton = document.getElementById('addQuoteBtn');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-    //Quote.loadAll();
-    // Set an event handler for the save/submit button
-    var saveButton = document.getElementById('addQuoteBtn');
-    saveButton.addEventListener("click", _initialize.ql.view.createQuote.insertSelection);
-  },
-  // save user input data
-  insertSelection: function insertSelection() {
+(0, _jquery2.default)(document).mouseup(function () {
+    var text = getSelectedText();
+    if (text != "") console.log(text);
+});
 
-    var formEl = document.forms['Quote'];
-    chrome.tabs.query({ active: true, windowId: chrome.windows.WINDOW_ID_CURRENT }, function (tab) {
-
-      console.log("Right about to send message!");
-      chrome.tabs.sendMessage(tab[0].id, { method: "sendingRequest" }, function (response) {
-        try {
-          if (response) {
-            console.log("received response");
-            console.log(response);
-            console.log("Description text: " + formEl.comment.value);
-            var today = new Date();
-            //create new object 
-            var slots = { comment: formEl.comment.value,
-              timeStamp: today.toLocaleDateString(),
-              url: tab[0].url,
-              quoteText: response.data };
-            //add object as new table instance
-            Quote.create(slots);
-            //remove text from input element
-            formEl.reset();
-            //save new object from memory to local storage
-            Quote.saveAll();
-          }
-        } catch (error) {
-          alert("No response from selection.js, due to: " + error);
-        }
-      });
-    });
-  }
-
-}; /***********************************************
-   ***  Methods for the use case createQuote  ******
-   ************************************************/
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _initialize = __webpack_require__(0);
-
-_initialize.ql.view.listQuotes = {
-  setupUserInterface: function setupUserInterface() {
-    var listButton = document.getElementById('listQuotesBtn');
-    listButton.addEventListener("click", _initialize.ql.view.listQuotes.setupUserInterface);
-    var tableBodyEl = document.querySelector("table#quotes>tbody");
-    var keys = [],
-        key = "",
-        row = {},
-        i = 0;
-    // load all quote objects
-    Quote.loadAll();
-    keys = Object.keys(Quote.instances);
-    // for each quote, create a table row with a cell for each attribute
-    for (i = 0; i < keys.length; i++) {
-      key = keys[i];
-      row = tableBodyEl.insertRow();
-      row.insertCell(-1).textContent = Quote.instances[key].comment;
-      row.insertCell(-1).textContent = Quote.instances[key].timeStamp;
-      row.insertCell(-1).textContent = Quote.instances[key].quoteText;
-      row.insertCell(-1).textContent = Quote.instances[key].url;
+function getSelectedText() {
+    if (window.getSelection) {
+        return window.getSelection().toString();
+    } else if (document.selection) {
+        return document.selection.createRange().text;
+    } else {
+        return '';
     }
-  }
-}; /*******************************************************************
-    *                      listQuote use case
-    ******************************************************************/
+}
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _initialize = __webpack_require__(0);
-
-document.addEventListener("DOMContentLoaded", _initialize.ql.view.createQuote.setupUserInterface);
-document.addEventListener("DOMContentLoaded", _initialize.ql.view.listQuotes.setupUserInterface);
-
-//document.onmouseup = function(){dataFromSelection = window.getSelection().toString()};
-
-/***/ }),
-/* 19 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3838,9 +3740,9 @@ exports.printHistoryColor = printHistoryColor;
 exports.printNewHistoryColor = printNewHistoryColor;
 exports.printSelectedColor = printSelectedColor;
 
-var _constants = __webpack_require__(4);
+var _constants = __webpack_require__(3);
 
-var _getPalette = __webpack_require__(3);
+var _getPalette = __webpack_require__(2);
 
 function storeColorPickerData(color, onColorClick) {
 
