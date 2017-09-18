@@ -18,9 +18,11 @@ import colorPickerInit from './modules/colorPicker';
 
 import * as notes from './modules/notesScripts/note';
 
+import  checkProtocol from './modules/colorPicker';
 import { storeColorPickerData, printNewHistoryColor, printHistoryColor, printSelectedColor } from './modules/colorHistory';
 
 $(document).ready(function() {
+    //checkProtocol();
      printHistoryColor(onColorClick);
      getLastColor().then((selectedColor) => { 
         if(selectedColor){
@@ -31,11 +33,15 @@ $(document).ready(function() {
     
     $("#eyeDropper").on('click', function() {
         console.log("pick color!");
-        colorPickerInit();
-        $('.options').addClass('invisible');
-        $('#colorPickerDiv').addClass('invisible');
-        $('.colorInfo').removeClass('invisible');
-        colorInfo();
+        colorPickerInit(function() {
+            $('.options').addClass('invisible');
+            $('#colorPickerDiv').addClass('invisible');
+            $('.colorInfo').removeClass('invisible');
+            console.log("aa");
+            colorInfo();
+        });
+
+
     });
     $('#shrinkMe').click(function(){ // or any other event
         $(this).toggleClass('shrink');

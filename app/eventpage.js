@@ -35,7 +35,6 @@ var contextMenuItem = {
 };
 chrome.contextMenus.create(contextMenuItem);
 chrome.contextMenus.onClicked.addListener(function (clickData) {
-
     //return true;
     if (clickData.menuItemId == "addText" && clickData.selectionText) {
         console.log("here");
