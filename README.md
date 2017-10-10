@@ -1,4 +1,3 @@
-![Logo of the project](/app/icons/icon128.png)
 
 # Multidash
 
